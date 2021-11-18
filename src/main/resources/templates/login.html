@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title> Login </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body >
+	<div style="background-color:#202095;height:50px;">
+	
+	</div>
+	<div class="container-fluid ">
+		<div class="row col-lg-4 col-lg-offset-4 login">
+		  <img src="../photos/login.png" class="avatar" >	
+			<form th:action="@{/login}" method="POST" class="form-signin">
+				<h3 class="form-signin-heading" th:text="Login"></h3>
+				<br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" /> <br /> <input type="password" th:placeholder="Password" id="password" name="password" class="form-control" /> <br />
+
+				<div align="center" th:if="${param.error}">
+					<p style="font-size: 20; color: #FF1C19;">Erruer de validation.</p>
+				</div>
+				<input name="Submit" value="Login" type="Submit" >
+				 <a  href="/register">Créer Un nouveau Compte</a> 
+			</form>
+		</div>
+	</div>
+   <style>
+      body
+      {
+        background:url('../photos/MO.jpg') no-repeat center center fixed;
+        -webKit-background-size:cover;
+        -moz-background-size:cover;
+        -0-background-size:cover;
+        background-size:cover;
+      }
+      
+      .login
+      {
+        background:rgba(0,0,0,0.5);
+        color:#fff;
+        margin-top: 80px;
+        padding:20px;
+   
+      }
+      
+      .avatar
+      {
+        width:100px;
+        height:100px;
+        border-radius:50px;
+        position:absolute;
+        top:-50px;
+        left:calc(50% - 50px);
+      }
+      
+      h3
+      {
+         text-align:center;
+         margin-top:50px;
+      }
+     
+      .login input[type="text"], input[type="password"]
+       {
+       		border:none;
+       		border-bottom:1px solid #fff;
+       		background:transparent;
+       		outline:none;
+       		height:40px;
+       		color:#fff;
+       		font-size: 16px;
+       }
+       .login input[type="Submit"]
+       {
+           border:none;
+           outline: none;
+           height:40px;
+           width:360px;
+           background:#202095;
+           color:#fff;
+           font-size:18px;
+           border-radius:20px;
+       }
+        .login input
+        {
+         	margin-bottom: 20px
+        }
+        .login a
+        {
+          text-decoration:none;
+          font-size:14px;
+          color:#fff; 
+          margin-left:115px;    
+        }
+        .login a:hover
+        {
+          color: #39dc79;
+          text-align:center;
+          
+        }
+   </style>
+
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Marjane</title>
+<!-- CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/styleIndex.css">
+<!-- Fin CSS -->
+<!-- font -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"
+	rel="stylesheet">
+
+<!-- font -->
+
+
+</head>
+<body>
+	<!-- header ------>
+	<div class="block">
+
+		<header class="header">
+			<a href=" " class="header-logo">Mon Marjane</a>
+			<nav class="header-menu">
+				 <a th:href="@{/Connecter}">Ma Compte</a> 
+			</nav>
+			  <h2>Bienvenue</h2>
+		</header>
+	</div>
+	<!-- Fin header -->
+
+	<!-- banniére -->
+	<div class="black">
+
+		<div class="banner">
+
+			<img src="../photos/MO.jpg" alt=" BienVenus En Marjan">
+
+			<div class="banner-content">
+				<h1 class="title is-1">BienVenus Sur Mon Marjane</h1>
+				<button class="button is-link">Contactez-moi!</button>
+			</div>
+		</div>
+	</div>
+	<!-- Fin banniére -->
+
+	<!-- A propose -->
+	<div class="block heade">
+    <div class="container ">
+		<div class="container about">
+			<div class="columns">
+				<div class="column about-single-element ">
+					<i class="fas fa-cart-arrow-down"></i>
+					<p class="header-logo">APPAREILS Electronique</p>
+				</div>
+				<div class="column about-single-element">
+					<i class="fas fa-cart-arrow-down"></i>
+					<p class="header-logo">ALIMENTS</p>
+				</div>
+				<div class="column about-single-element">
+					<i class="fas fa-cart-arrow-down"></i>
+					<p class="header-logo">CUISINEE</p>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+	<!-- Fin a propose -->
+
+	<!-- PortFolio -->
+	<div class="block">
+		<h2 class="subtitle heading-site"></h2>
+		<div class="container">
+			<div class="tile is-ancestor">
+				<div class="tile is-vertical is-8">
+					<div class="tile">
+						<div class="tile is-parent is-vertical">
+							<article class="tile is-child">
+							 <a th:href="@{/homeAE}"><img src="../photos/AE2.png" alt="La description de la photo" class="image"></a>
+							</article>
+						</div>
+						<div class="tile is-parent">
+							<article class="tile is-child">
+							<a th:href="@{/homeAliments}">	<img src="../photos1/AL2.png" alt="La description de la photo" class="image"></a>
+							</article>
+						</div>
+					</div>
+
+				</div>
+				<div class="tile is-parent">
+					<article class="tile is-child">
+					<a th:href="@{/homeCuisine}">	<img src="../photos2/CS3.png" alt="La dexcription de la photo" class="image"> </a>
+					</article>
+				</div>
+			</div>
+			<div class="block head">
+				<div class="container about">
+					<div class="columns">
+						<div class="column about-single-element">
+							<i class="fas fa-cart-arrow-down"></i>
+							<p class="header-logo">VETEMENT</p>
+						</div>
+						<div class="column about-single-element">
+							<i class="fas fa-cart-arrow-down"></i>
+							<p class="header-logo">SPORTS</p>
+						</div>
+						<div class="column about-single-element">
+							<i class="fas fa-cart-arrow-down"></i>
+							<p class="header-logo">TELEVISION</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tile is-parent">
+				<div class="tile is-ancestor">
+					<div class="tile is-vertical is-8">
+						<div class="tile">
+							<div class="tile is-parent is-vertical">
+								<article class="tile is-child">
+								<a th:href="@{/homeVetement}">	<img src="../photos1/V3.jpg" alt="La dexcription de la photo" class="image"> </a>
+								</article>
+							</div>
+							<div class="tile is-parent">
+								<article class="tile is-child">
+							<a th:href="@{/homeSport}">		<img src="../photos1/SP7.jpg" alt="La dexcription de la photo" class="image"> </a>
+								</article>
+							</div>
+						</div>
+
+					</div>
+					<div class="tile is-parent">
+						<article class="tile is-child">
+						<a th:href="@{/homeTV}">	<img src="../photos/tv1.png" alt="La dexcription de la photo" class="image"> </a>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- Fin Portfolio -->
+
+	<!-- footer/contact -->
+
+      <div class="container-fluid">
+    <div class="row footer-top">
+        <div class="col-sm-4 text-center">
+            <h4 class="ft-text-title">Media Name</h4>
+            <h6 class="ft-desp">Company Name 
+                <br>Country Name
+            </h6>
+            <h4 class="details">
+                <a class="contact" href="tel:+977-1-4107223">
+                    <i class="fa fa-phone" aria-hidden="true"></i> +212-651022901</a>
+                </h4>
+            </div>
+            <div class="col-sm-4 text-center border-left">
+                <h4 class="ft-text-title">Our Team</h4>
+                <div class="address-member">
+                    <p class="member">
+                        <b>Director</b> : 
+                    </p>
+                    <p class="member">
+                        <b>Editor</b> : 
+                    </p>
+                    <p class="member">
+                        <b>Reporter</b> : 
+                    </p>
+                    <p class="member">
+                        <b>Reporter</b> : 
+                    </p>
+               </div>
+           </div>
+           <div class="col-sm-4 col-xs-12 text-center border-left">
+            <h4 class="ft-text-title">About</h4>
+            <div class="pspt-dtls">
+                <a href="#" class="about">About</a>
+                <a href="#" class="team">Team</a>
+                <a href="#" class="advertise">Advertise</a>
+                <br><br><br><br><br><br><br>
+            </div>
+        </div>
+    </div>
+	<div class="row ft-copyright pt-2 pb-2" style="padding-left: 25px;">
+		<div class="col-sm-4 text-pp-crt">cpoyright 2020 All  Rights Reserved</div>
+		<div class="col-sm-4 text-pp-crt-rg">Department of Information Reg No :</div>
+		<div class="col-sm-4 developer">
+			<a href="https://topline-tech.com" target="_blank" class="text-pp-crt">By : <b>M</b>ar<b>J</b>ane</a>
+		</div>
+	</div>
+</div>
+
+	<!-- Fin footer/contact -->
+	<!-- Script -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<script src="../js/all.js"></script>
+	<!-- Fin Script -->
+</body>
+</html>

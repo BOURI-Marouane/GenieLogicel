@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Achats</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	
+</script>
+  
+<link rel="stylesheet" href="../css/style.css">
+
+
+
+</head>
+<body>
+
+	 
+	
+		<div class="main_content">
+
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">BienVenu Au Marjan</a>
+					</div>
+					<ul class="nav navbar-nav">
+
+						<!-- 	<table class="table">								
+								<tr >									
+									<td><a  class="btn btn-success eBtn">Acheter</a></td>							
+								</tr>
+							</table> -->
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					   <li class="cart"><a th:href="@{/panier}">Panier <span class="glyphicon  glyphicon-shopping-cart"> </span>
+								</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+								Sign Up</a></li>
+						<li><a th:href="@{/Connecter}"><span class="glyphicon glyphicon-log-in"></span>
+								Login</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="info">
+           
+      
+				<div class="container col-md-12">
+					<div class="panel panel-primary ">
+						<div class="panel-heading">Liste des produits</div>
+						<div class="panel-body">
+							<form th:action="@{/index}" method="get">
+								<label>Mot clé:</label> <input type="text" name="motCle"
+									th:value="${motCle}">
+								<button type="submit" class="btn btn-primary">Chercher</button>
+							</form>
+						</div>
+						<div class="panel-body">
+							<table class="table">
+								<tr>
+									<th>Description</th>
+									<th>Prix</th>
+									<!-- "@{'../photos/' + ${p.image}}"  -->
+								</tr>
+								<tr class="pere" th:each="p:${listProduits}">
+									<td class="designation" th:text="${p.designation}"><span class="designation"></span></td>
+									<td class ="prix" th:text="${p.prix} + DH"></td>
+
+									<td><img th:src="@{'../photos/' + ${p.image}}" width="100" height="100"></td>
+
+									<td><a th:href="@{findOne/(id=${p.id})}"
+										class="btn btn-success eBtn">Commander</a></td>
+									<td><a th:href="@{findOne/(id=${p.id})}"
+										class="btn btn-warning nBtn"  ><span class="glyphicon  glyphicon-shopping-cart">
+										                </span>Panier</a></td>
+								</tr>
+							</table>
+
+							<ul class="nav nav-pills">
+								<li th:class="${currentPage==status.index}?'active':''"
+									th:each="page,status:${page}"><a
+									th:href="@{index(page=${status.index}, motCle=${motCle})}"
+									th:text="${status.index}"></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<div class="FormMy">
+		<form th:action="@{/saveClient}" method="POST" th:object="${client}">
+			
+			  <div th:object="${ligneCommandeClient}">
+				<div class="modal fade" id="example" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Acheter
+									Produit</h5>
+
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+								
+								<div class="form-group">
+									<label for="id" class="col-form-label"></label> <input
+										type="hidden" class="form-control" id="id" name="id"
+										value="">
+								</div>
+								<div class="form-group">
+									<label for="id" class="col-form-label">Quantite:</label> <input
+										type="text" class="form-control" id="quantite" name="quantite"
+										value="1">
+								</div>
+								<div class="form-group">
+									<label for="id" class="col-form-label">Nom:</label> <input
+										type="text" class="form-control" id="nome" name="nome"
+										value=" ">
+								</div>
+								<div class="form-group">
+									<label for="id" class="col-form-label">Prenome:</label> <input
+										type="text" class="form-control" id="prenome" name="prenome"
+										value=" ">
+								</div>
+
+								<div class="form-group">
+									<label for="id" class="col-form-label">Ville:</label> <input
+										type="text" class="form-control" id="ville" name="ville"
+										value=" ">
+								</div>
+
+								<div class="form-group">
+									<label for="id" class="col-form-label">Adresse:</label> <input
+										type="text" class="form-control" id="adresse" name="adresse"
+										value=" ">
+								</div>
+
+								<div class="form-group">
+									<label for="id" class="col-form-label">telefone:</label> <input
+										type="text" class="form-control" id="telefone" name="telefone"
+										value=" ">
+								</div>
+
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+								<input type="submit" class="btn btn-primary" value="save">
+							</div>
+						</div>
+					  </div>
+				   </div>
+			   </div>
+		   
+		</form>
+	</div>
+    <div class="MyForme">
+		<form th:action="@{/panier}" method="post" th:object="${produit}">
+		
+			  <div th:object="${ligneCommandeClient}">
+				<div class="modal fade" id="example" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Ajouter Panier</h5>
+
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+
+									<div class="form-group">
+									<label for="id" class="col-form-label"></label> <input
+										type="text" class="form-control" id="idProduit" name="id"
+										value="">
+								</div>
+								
+
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+								<input type="submit" class="btn btn-primary" value="Ajouté Au Panier">
+							</div>
+						</div>
+					  </div>
+				   </div>
+			
+		     </div>
+		</form>
+	</div>
+	
+	 <script  src = "../js/mainjs.js"></script>
+	<footer> </footer>
+</body>
+</html>

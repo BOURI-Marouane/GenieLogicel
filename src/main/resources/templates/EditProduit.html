@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Saisie d'un Produit</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a th:href="@{/index}">Home</a></li>
+				<li><a th:href="@{/formProduit}">Produits</a></li>
+				<li><a href="#">Catégories</a></li>
+				<li><a href="#">Catalogue</a></li>
+			</ul>
+		</div>
+	</nav>
+	<!-- <div class="form">
+		<div class="col-md-6  col-sm-6 col-xs-12 spacer col-md-offset-3" id="maform">
+			<div class="panel panel-default">
+				<div class="panel-heading">Nouveau Produit</div>
+				<div class="panel-body">
+					<form th:action="@{/save}" method="post">
+					    <div class="form-group">
+							<label class="control-label">ID : </label><label th:text="${produit.id}"></label> <input
+									class="form-control" type="hidden" name="id"
+								th:value="${produit.id}"> 
+						</div>
+						<div class="form-group">
+							<label class="control-label">Désignation:</label> <input
+								class="form-control" type="text" name="designation"
+								th:value="${produit.designation}"> <span
+								th:errors="${produit.designation}" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Prix:</label> <input
+								class="form-control" type="text" name="prix"
+								th:value="${produit.prix}"> <span
+								th:errors="${produit.prix}" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Quantité:</label> <input
+								class="form-control" type="text" name="quantite"
+								th:value="${produit.quantite}"> <span
+								th:errors="${produit.quantite}" class="text-danger"></span>
+						</div>
+						<button type="submit" class="btn btn-primary">save</button>
+					</form>
+				</div>
+			</div>
+		</div>
+     </div>
+	 -->
+
+	<div class="myForm">
+		<form th:action="@{/save}" method="post">
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Nouveau
+								Produit</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+
+							<div class="form-group">
+								<label for="id" class="col-form-label">ID:</label> <input
+									type="text" class="form-control" id="id" name="id" value=" " />
+							</div>
+							<div class="form-group">
+								<label for="id" class="col-form-label">Designation:</label> <input
+									type="text" class="form-control" id="designation"
+									name="designation" value=" " />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="id" class="col-form-label">Prix:</label> <input
+								type="text" class="form-control" id="prix" name="prix" value=" " />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="id" class="col-form-label">Quantite:</label> <input
+							type="text" class="form-control" id="quantite" name="quantite"
+							value=" " />
+					</div>
+
+					<div class="form-group">
+						<label for="message-text" class="col-form-label">Message:</label>
+						<textarea class="form-control" id="message-text"></textarea>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<input type="submit" class="btn btn-primary" value="save" />
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+
+	<footer>
+		<div></div>
+	</footer>
+</body>
+</html>

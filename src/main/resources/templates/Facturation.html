@@ -1,0 +1,143 @@
+	<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="utf-8">
+	<title>Facturation</title>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+		
+	</script>
+	
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+	 <script type="text/javascript" >
+	 
+	 function genPDF()
+	 {
+		 var doc = new jsPDF();
+		    doc.fromHTML($('#test').get(0), 15, 15, {
+		        'width': 170
+		    });
+		 doc.save('Test.pdf');
+	 }
+	 
+	 
+	 
+	 </script>
+	
+	<link rel="stylesheet" href="../css/styleFacture.css">
+	
+	
+	
+	</head>
+	<body>
+	         
+	
+			
+			<div class="main_content">
+	
+				<nav class="navbar navbar-inverse">
+					<div class="container-fluid">
+						
+						<ul class="nav navbar-nav">
+	
+							<!-- 	<table class="table">								
+									<tr >									
+										<td><a  class="btn btn-success eBtn">Acheter</a></td>							
+									</tr>
+								</table> -->
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+						    <li><a th:href="@{/}"><span class="glyphicon glyphicon-arrow-right"></span>
+									Routeur au produits</a></li>
+							<!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span>
+									Sign Up</a></li> -->
+							<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+									Déconnecter</a></li>
+						</ul>
+					</div>
+				</nav>
+				<div id="test">
+	       
+	
+				<div class="info">
+					<div class="container  col-md-10 col-md-offset-1">
+						<div class="panel panel-primary ">
+							<div class="panel-heading">Facturation</div>
+							<div class="panel-body"></div>
+							<div class="panel-body">
+								<table class="table">
+									<tr>
+	
+										<th>Nom</th>
+										<th>Prenome </th>
+										<th>Telefone</th>
+										<th>Code Facture</th>
+										<th>Date Facture</th>
+									</tr>
+									<tr>
+									
+										<tr th:each=" S:${client} ">
+										
+											<td  th:text="${S.nome} "></td>
+											<td  th:text="${S.prenome}"></td>	
+											<td  th:text="${S.telefone}"></td>
+											<td  class="code" th:text="${S.code}"></td>
+											<td  th:text="${S.registrationDate}"></td>
+					               
+					                     	    
+					                    </tr>
+				                    	<tr>
+											<th>Les produits</th>
+											<th>Prix unitaire </th>
+											<th>Quantite</th>
+											<th></th>
+											<th></th>
+											
+											
+									    </tr>
+									    <tr th:each="S:${articlePanier1}">
+											  	<td  th:text="${S.categorieAliment.designation}"></td>
+												<td  th:text="${S.categorieAliment.prix} + DH"></td>	
+												<td  th:text="${S.quantite}"></td>
+											   
+						                          
+						                        						
+									    </tr>	
+									     <tr>															 			          			                   
+				                     	    <td></td>
+				                            <td></td>
+				                            <td></td>
+				                            <td></td>
+				                            
+				                            <td style="font-size:15px  ">Prix-Total</td>
+				                            <td style="font-size:15px  " class="text-right" th:text = "${Total}"></td><td style="font-size:15px  ">DH</td>
+				                            <!-- <td><td><a 
+											class="btn btn-success eBtn">impimer</a></td></td>  -->
+										 
+				                      </tr>			                    
+				                       		                     	    	                
+								   </table>	
+								   						
+							   </div>
+						   </div>
+					   </div>
+				  </div>
+			  </div>     
+	      </div>  
+	
+		
+	    
+		<script  src = "../js/mainjs.js"></script>
+		
+		<footer> </footer>
+		<!-- <a href="javascript:genPDF()"> Telecharger Facture</a> -->
+	</body>
+	</html>

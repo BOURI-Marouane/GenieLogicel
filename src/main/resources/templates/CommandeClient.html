@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Commande Client</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+</script>	
+
+
+
+
+
+
+</head>
+<body>
+
+	<div class="wrapper">
+		<div class="sidebar">
+		   <div class="img">   <img src="../photos/marjan.jpg" width="100" height="100"></div>
+			<!-- <h2>BienVenu</h2> -->
+			<ul>
+							
+				<li><a th:href="@{/pageCS}"><i class="fas fa-address-card"></i>Produits</a></li>
+				<li><a th:href="@{/Client}"><i class="fas fa-user"></i>Clients</a></li>
+				<li><a th:href="@{/CommandeClient}"><i class="fas fa-address-card"></i>Commande Clients</a></li>
+				<li><a th:href="@{/LigneCommandeClient}"><i class="fas fa-address-card"></i>Ligne Commande</a></li>
+				
+			</ul>
+			<div class="social_media">
+				<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+					class="fab fa-twitter"></i></a> <a href="#"><i
+					class="fab fa-instagram"></i></a>
+			</div>
+		</div>
+		<div class="main_content">
+
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">Bienvenu Monsieurs</a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li><a  class="btn btn-dark" th:href="@{/index}"></a></li>
+					
+							 <!-- th:href="@{/formProduit}"  -->
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+								Login</a></li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="info">
+
+
+				<div class="container col-md-12">
+					<div class="panel panel-primary ">
+						<div class="panel-heading clt">Liste des Commandes Clients</div>
+						<div class="panel-body">
+							<form th:action="@{/CommandeClient}" method="get">
+								<label>Mot clé:</label> <input type="text" name="motCle"
+									th:value="${motCle}">
+								<button type="submit" class="btn btn-primary">Chercher</button>
+							</form>
+						</div>
+						<div class="panel-body">
+								<table class="table">
+										<tr>
+											<th>Id Commande Client</th>
+											<th>Id Client</th>
+											<th>Date Commande</th>									
+										</tr>
+										<tr th:each="C:${listCommandeClient}">
+										 	<td th:text="${C.idCommandeClient}"></td>
+											<td th:text="${C.client.idClient}"></td>
+											<td th:text="${C.registrationDate}"></td>										
+											<td><a class="btn btn-danger"
+												onclick="return confirm('Etes vous sure?')"
+												th:href="@{/deleteCommandeClient(id=${C.idCommandeClient}, page=${currentPage}, motCle=${motCle})}">Supprimer</a>
+											<!-- </td>
+											<td><a th:href="@{findOne/(id=${C.idCommandeClient})}" class="btn btn-success eBtn">Modifier</a></td> -->							     
+										</tr>
+								</table>
+								<ul class="nav nav-pills">
+									<li th:class="${currentPage==status.index}?'active':'' "
+										th:each="page,status:${pages}"><a
+										th:href="@{/CommandeClient(page=${status.index}, motCle=${motCle})}"
+										th:text="${status.index}"></a></li>
+								</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="myForm">
+		<form th:action="@{/save}" method="post" th:object="${produit}" enctype="multipart/form-data">
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Modifier Produit</h5>
+								
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+
+							<!-- <div class="form-group">
+								<label for="id" class="col-form-label">ID:</label> 
+									<input type="text" class="form-control" id="id" 
+									name="id" value=" ">
+							</div> -->
+							<div class="form-group">
+								<label for="id" class="col-form-label">Designation:</label> 
+									<input type="text" class="form-control" id="designation" 
+									name="designation" value=" ">
+							</div>
+
+							<div class="form-group">
+								<label for="id" class="col-form-label">Prix:</label> 
+									<input type="text" class="form-control" id="prix" name="prix"
+									value=" ">
+							</div>
+
+							<div class="form-group">
+								<label for="id" class="col-form-label">Quantite:</label> 
+								   <input	type="text" class="form-control" id="quantite" name="quantite"
+									value=" ">
+							</div>
+							
+							<div class="form-group">
+								<label for="id" class="col-form-label">photo:</label> 
+								   <input	type="file" class="form-control" id="pecture" name="pecture"
+									value=" ">
+							</div> 
+							
+						</div>
+
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+							<input type="submit" class="btn btn-primary" value="save">
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<style>
+@import
+	url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap')
+	;
+	
+	 body
+      {
+        background:url('../photos/MAR.jpeg') no-repeat center center fixed;
+        -webKit-background-size:cover;
+        -moz-background-size:cover;
+        -0-background-size:cover;
+        background-size:cover;
+      }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+	background-color: #f3f5f9;
+}
+
+.wrapper {
+	display: flex;
+	position: relative;
+}
+
+.wrapper .sidebar {
+	width: 200px;
+	height: 100%;
+	background: #202095;
+	padding: 30px 0px;
+	position: fixed;
+}
+
+.wrapper .sidebar .img {
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	margin-bottom: 30px;
+	
+}
+
+.wrapper .sidebar ul li {
+	padding: 15px;
+	border-bottom: 1px solid #bdb8d7;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wrapper .sidebar ul li a {
+	color: #bdb8d7;
+	display: block;
+}
+
+.wrapper .sidebar ul li a .fas {
+	width: 25px;
+}
+
+.wrapper .sidebar ul li:hover {
+	background-color: #594f8d;
+}
+
+.wrapper .sidebar ul li:hover a {
+	color: #fff;
+}
+
+.wrapper .sidebar .social_media {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+}
+
+.wrapper .sidebar .social_media a {
+	display: block;
+	width: 40px;
+	background: #202095;
+	height: 40px;
+	line-height: 45px;
+	text-align: center;
+	margin: 0 5px;
+	color: #bdb8d7;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.wrapper .main_content {
+	width: 100%;
+	margin-left: 200px;
+}
+
+.wrapper .main_content .header {
+	padding: 20px;
+	background: #fff;
+	color: #717171;
+	border-bottom: 1px solid #e0e4e8;
+}
+
+.wrapper .main_content .info {
+	margin: 20px;
+	color: #717171;
+	line-height: 25px;
+}
+
+.wrapper .main_content .info div {
+	margin-bottom: 20px;
+}
+
+.navbar-inverse
+{
+  background-color:#202095;
+  border-color:#202095;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+.panel-primary .panel-heading {
+    background-color: #202095;
+    border-color: #202095;
+}
+.btn-primary {
+    background-color: #202095;
+    border-color: #202095;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #202095;
+}
+.panel
+{
+	background-color:#8a693b;
+}
+label
+{
+    color: #fff;
+}
+th
+{
+    color: #fff;
+}
+td
+{
+    color: #fff;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+    margin-left: 110px;
+}
+.clt
+{
+	text-align : center;
+}
+</style>
+</body>
+</html>

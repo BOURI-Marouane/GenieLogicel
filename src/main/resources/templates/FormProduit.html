@@ -1,0 +1,83 @@
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Saisie d'un Produit</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a th:href="@{/index}">Home</a></li>
+				<li><a th:href="@{/formProduit}">Produits</a></li>
+				<li><a href="#">Catégories</a></li>
+				<li><a href="#">Catalogue</a></li>
+			</ul>
+		</div>
+	</nav>
+		<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a th:href="@{/index}">Home</a></li>
+				<li><a th:href="@{/formProduit}">Ajouter Produit</a></li>
+			
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						Sign Up</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+						Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+		<div class="col-md-6 col-sm-6 col-xs-12 spacer col-md-offset-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">Nouveau Produit</div>
+				<div class="panel-body">
+					<form th:action="@{/save}" method="post" th:object="${produit}" enctype="multipart/form-data">
+						<div class="form-group">
+							<label class="control-label">Désignation:</label> <input
+								class="form-control" type="text" th:field="*{designation}"
+								th:value="${produit.designation}"> <span
+								th:errors="${produit.designation}" class="text-danger"></span>
+
+						</div>
+						<div class="form-group">
+							<label class="control-label">Prix:</label> <input
+								class="form-control" type="text" th:field="*{prix}"
+								th:value="${produit.prix}"> <span
+								th:errors="${produit.prix}" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Quantité:</label> <input
+								class="form-control" type="text" th:field="*{quantite}"
+								th:value="${produit.quantite}"> <span
+								th:errors="${produit.quantite}" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Photo:</label>
+							<input class="form-control" type="file" name="pecture"/><br /> 							
+						</div>
+						<button type="submit" class="btn btn-primary">save</button>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+
+	
+
+	<footer>
+		<div></div>
+	</footer>
+</body>
+</html> -->
